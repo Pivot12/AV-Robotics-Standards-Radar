@@ -126,6 +126,20 @@
   /* ---- Filter bar ---- */
   .filterbar { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
   .filter-label { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 8px; }
+  .filter-row { display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-end; }
+  .filter-col { display: flex; flex-direction: column; }
+  .date-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .date-field { display: flex; align-items: center; gap: 7px; }
+  .date-field span { font-size: 12.5px; font-weight: 600; color: var(--secondary-ink); }
+  .date-field input {
+    padding: 9px 11px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink); font-family: "Inter"; font-size: 13.5px;
+  }
+  .date-field input:focus { outline: 2px solid var(--emerald); outline-offset: 1px; border-color: var(--emerald); }
+  .date-reset {
+    font-family: "Inter"; font-size: 12.5px; font-weight: 500; cursor: pointer;
+    background: none; border: none; color: var(--emerald); padding: 4px 2px; text-decoration: underline;
+  }
   .chips { display: flex; flex-wrap: wrap; gap: 9px; }
   .chip {
     font-family: "Inter"; font-size: 13px; font-weight: 500; cursor: pointer;
@@ -230,11 +244,51 @@
 
   .disclaimer { font-size: 12.5px; color: var(--secondary-ink); margin-top: 18px; max-width: 74ch; line-height: 1.55; }
 
+  /* ---- Persistent attribution badge ---- */
+  .attribution-badge {
+    position: fixed; right: 16px; bottom: 16px; z-index: 60;
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: "Sora", system-ui, sans-serif; font-size: 11px; font-weight: 600;
+    color: #FFFFFF; background: var(--emerald);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 999px;
+    padding: 6px 12px; text-decoration: none; line-height: 1;
+    box-shadow: 0 2px 6px rgba(24,24,26,0.10), 0 10px 24px -14px rgba(47,107,79,0.55);
+    transition: transform .1s ease, background .15s ease;
+  }
+  .attribution-badge:hover { background: #275a43; text-decoration: none; transform: translateY(-1px); }
+  .attribution-badge .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--terracotta); flex: none; box-shadow: 0 0 0 2px rgba(255,255,255,0.25); }
+  .foot .by { color: var(--muted); }
+  .foot .by a { color: var(--emerald); font-weight: 600; }
+
+  /* ---- Print-only header ---- */
+  .print-header { display: none; }
+
   @media (max-width: 480px) {
     .wrap { padding: 0 18px; }
     .hero { padding: 52px 0 30px; }
     .stat-row { gap: 26px; }
     .nav a.navlink { display: none; }
+    .attribution-badge { display: none; }
+    .filter-row { gap: 16px; }
+  }
+
+  /* ---- Print styles ---- */
+  @media print {
+    html, body { background: #FFFFFF !important; }
+    .bg-layer, header.site, .hero-cta, .attribution-badge,
+    .btn, .chip, .date-reset, .search-wrap, .card-form, #signup,
+    .nav, footer.site { display: none !important; }
+    section { padding: 12px 0 !important; }
+    .panel { box-shadow: none !important; border: 1px solid #ccc !important; }
+    .feed-item { break-inside: avoid; }
+    a[href]::after { content: ""; }
+    .print-header {
+      display: block; padding: 0 0 16px; margin-bottom: 16px;
+      border-bottom: 2px solid var(--emerald);
+    }
+    .print-header .ph-title { font-family: "Sora", sans-serif; font-size: 22px; font-weight: 800; color: var(--ink); margin: 0 0 4px; }
+    .print-header .ph-by { font-size: 13px; color: var(--emerald); font-weight: 600; margin: 0 0 6px; }
+    .print-header .ph-note { font-size: 11.5px; color: var(--muted); margin: 0; max-width: 78ch; }
   }
 </style>
 </head>
@@ -254,11 +308,12 @@
 <!-- Shared logo mark (refined radar / signal sweep, light bg) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="radarmark" viewBox="0 0 32 32">
-    <circle cx="16" cy="16" r="13.5" fill="none" stroke="#2F6B4F" stroke-width="1.4" opacity="0.35"/>
-    <circle cx="16" cy="16" r="8.5" fill="none" stroke="#2F6B4F" stroke-width="1.4" opacity="0.55"/>
-    <circle cx="16" cy="16" r="2.6" fill="#2F6B4F"/>
-    <path d="M16 16 L16 3.5 A12.5 12.5 0 0 1 26.5 9.5 Z" fill="#2F6B4F" opacity="0.14"/>
-    <line x1="16" y1="16" x2="26.5" y2="9.5" stroke="#B5533B" stroke-width="1.7" stroke-linecap="round"/>
+    <circle cx="16" cy="16" r="14" fill="none" stroke="#2F6B4F" stroke-width="1.6" opacity="0.22"/>
+    <circle cx="16" cy="16" r="9.5" fill="none" stroke="#2F6B4F" stroke-width="1.6" opacity="0.45"/>
+    <path d="M16 16 L16 2 A14 14 0 0 1 28.1 9 Z" fill="#2F6B4F" opacity="0.12"/>
+    <path d="M16 16 L27.5 8.4" fill="none" stroke="#2F6B4F" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="27.5" cy="8.4" r="2.4" fill="#B5533B"/>
+    <circle cx="16" cy="16" r="2.7" fill="#2F6B4F"/>
   </symbol>
 </svg>
 
@@ -319,15 +374,33 @@
   <!-- FILTER + FEED + SOURCES -->
   <section id="feed">
     <div class="wrap">
+      <div class="print-header" aria-hidden="true">
+        <p class="ph-title">AV &amp; Robotics Standards Radar</p>
+        <p class="ph-by">Prepared by Neel Shah · linkedin.com/in/neelshah29</p>
+        <p class="ph-note">This is a monitoring feed. Each entry indicates that an official regulator or standards-body page was detected to have changed — always confirm the substance with the official source before acting.</p>
+      </div>
+
       <div class="sec-head">
         <h2>Detected changes</h2>
         <span class="sub">Most recent first — a signal to investigate, not a legal record</span>
+        <span class="nav-spacer" style="flex:1"></span>
+        <button type="button" class="btn btn-ghost" id="export-pdf">Export PDF</button>
       </div>
 
       <div class="filterbar">
-        <div>
-          <div class="filter-label">Filter by category:</div>
-          <div class="chips" id="region-chips"></div>
+        <div class="filter-row">
+          <div class="filter-col">
+            <div class="filter-label">Filter by category:</div>
+            <div class="chips" id="region-chips"></div>
+          </div>
+          <div class="filter-col">
+            <div class="filter-label">Filter by date:</div>
+            <div class="date-controls">
+              <label class="date-field"><span>From</span><input type="date" id="date-from" aria-label="From date" /></label>
+              <label class="date-field"><span>To</span><input type="date" id="date-to" aria-label="To date" /></label>
+              <button type="button" class="date-reset" id="date-reset">Reset</button>
+            </div>
+          </div>
         </div>
         <div class="search-wrap">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
@@ -377,7 +450,7 @@
           </form>
         </div>
 
-        <div class="card-form">
+        <div class="card-form" id="contact">
           <h3>Contact us</h3>
           <p class="sub">Questions, a source we should add, or feedback? Send a note.</p>
           <form id="contact-form" novalidate>
@@ -410,15 +483,21 @@
       AV &amp; Robotics Standards Radar
     </span>
     <span class="foot-spacer"></span>
+    <span class="by">Built by <a href="https://linkedin.com/in/neelshah29" target="_blank" rel="noopener noreferrer">Neel Shah</a></span>
     <span>© <span id="year"></span> AV &amp; Robotics Standards Radar</span>
     <a href="privacy.html">Privacy</a>
   </div>
 </footer>
 
+<a class="attribution-badge" href="https://linkedin.com/in/neelshah29" target="_blank" rel="noopener noreferrer" title="Neel Shah on LinkedIn">
+  <span class="badge-dot" aria-hidden="true"></span>
+  Neel Shah · linkedin.com/in/neelshah29
+</a>
+
 <script>
   /* ===== Shared contract (identical across all three apps) ===== */
   const APP_NAME = "AV & Robotics Standards Radar";
-  const WEBHOOK_URL = "REPLACE_WITH_APPS_SCRIPT_URL";
+  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwfn4lGwz_v3XsaAsAc8vtIejZ1tvF437Kk91cD4bF8Zu63Dvrpvxs51aAt4mOyrNQs/exec";
   const _t0 = Date.now();
   const _ctx = () => ({ app: APP_NAME, ts: new Date().toISOString(), tz: Intl.DateTimeFormat().resolvedOptions().timeZone, lang: navigator.language, ref: document.referrer });
   function _beacon(p){ if(!WEBHOOK_URL||WEBHOOK_URL.startsWith("REPLACE"))return; try{ const b=new Blob([JSON.stringify(p)],{type:"text/plain;charset=utf-8"}); navigator.sendBeacon ? navigator.sendBeacon(WEBHOOK_URL,b) : fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p),keepalive:true}); }catch(e){} }
@@ -455,6 +534,12 @@
   let DATA = { meta:{}, sources:[], changes:[] };
   let activeRegion = "All";
   let searchTerm = "";
+
+  /* ---- Date range filter ---- */
+  const DATE_FROM_DEFAULT = "2025-01-01";
+  const todayISO = () => new Date().toISOString().slice(0,10);
+  let dateFrom = DATE_FROM_DEFAULT;
+  let dateTo = todayISO();
 
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, m => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[m]));
 
@@ -513,13 +598,16 @@
     const countEl = document.getElementById("feed-count");
     let items = (DATA.changes || []).slice();
     if (activeRegion !== "All") items = items.filter(c => c.region === activeRegion);
+    // Date range filter (entry date compared as YYYY-MM-DD strings)
+    if (dateFrom) items = items.filter(c => (c.date || "").slice(0,10) >= dateFrom);
+    if (dateTo) items = items.filter(c => (c.date || "").slice(0,10) <= dateTo);
 
     countEl.textContent = items.length ? `${items.length} change${items.length===1?"":"s"}` : "";
 
     if (!items.length) {
       const n = (DATA.sources || []).length;
       const msg = (DATA.changes || []).length
-        ? `No changes detected for ${esc(activeRegion)} yet.`
+        ? `No changes match your filters.`
         : `Monitoring ${n} source${n===1?"":"s"} — awaiting first scan.`;
       el.innerHTML = `<div class="empty">
         <svg width="40" height="40"><use href="#radarmark"/></svg>
@@ -608,6 +696,22 @@
     searchTerm = e.target.value.trim();
     renderSources();
   });
+
+  /* ---- Date range controls ---- */
+  const dateFromEl = document.getElementById("date-from");
+  const dateToEl = document.getElementById("date-to");
+  dateFromEl.value = dateFrom;
+  dateToEl.value = dateTo;
+  dateFromEl.addEventListener("change", () => { dateFrom = dateFromEl.value; renderFeed(); });
+  dateToEl.addEventListener("change", () => { dateTo = dateToEl.value; renderFeed(); });
+  document.getElementById("date-reset").addEventListener("click", () => {
+    dateFrom = DATE_FROM_DEFAULT; dateTo = todayISO();
+    dateFromEl.value = dateFrom; dateToEl.value = dateTo;
+    renderFeed();
+  });
+
+  /* ---- Export PDF (prints current filtered feed) ---- */
+  document.getElementById("export-pdf").addEventListener("click", () => { window.print(); });
 
   /* ---- Forms ---- */
   document.getElementById("signup-form").addEventListener("submit", (e) => {
