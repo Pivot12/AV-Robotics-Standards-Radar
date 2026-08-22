@@ -328,8 +328,6 @@ Markdown Content:
 
 * * *
 
-![Image 2](https://www.google.com/images/cleardot.gif)[![Image 3](https://www.google.com/images/cleardot.gif)​![Image 4](https://www.google.com/images/cleardot.gif)▼](https://www.automate.org/#)
-
 Copyright © 2026 Association for Advancing Automation
 
 900 Victors Way, Suite 140, Ann Arbor, Michigan, USA 48108
@@ -340,16 +338,8 @@ T: [(734) 994-6088](tel:1-734-994-6088) - F: (734) 994-3338
 
 [Privacy Policy](https://www.automate.org/a3/privacy-policy)
 
-[![Image 5: Privacy Settings](https://www.automate.org/images/privacyoptions.png?v1) Privacy Settings](javascript:do.Nothing())
+[![Image 2: Privacy Settings](https://www.automate.org/images/privacyoptions.png?v1) Privacy Settings](javascript:do.Nothing())
 
 [Site Map](https://www.automate.org/site-map)
 
 [Website Design & Development by Amplify Industrial Marketing + Guidance.](https://www.aimg.com/)
-
-![Image 7](https://fonts.gstatic.com/s/i/productlogos/translate/v14/24px.svg)
-
-Original text
-
-Rate this translation
-
-Your feedback will be used to help improve Google Translate
