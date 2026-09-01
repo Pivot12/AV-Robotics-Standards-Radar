@@ -94,8 +94,8 @@ Markdown Content:
     *   [Automation Market Intelligence](https://www.automate.org/automation-news-center/market-intelligence)
     *   [Age of Automation](https://www.automate.org/a3/age-of-automation)
 
-    *   [Business of Automation Podcast](https://www.automate.org/business-of-automation)
     *   [Automated Podcast](https://www.automate.org/automated-podcast)
+    *   [Business of Automation Podcast](https://www.automate.org/business-of-automation)
     *   [Workforce Development](https://www.automate.org/a3/workforce-development)
     *   [Careers in Automation](https://www.automate.org/career-center)
     *   [A3 Whitepapers](https://www.automate.org/whitepapers)
