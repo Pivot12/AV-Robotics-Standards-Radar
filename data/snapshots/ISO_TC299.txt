@@ -30,7 +30,7 @@ Search
 
 [**Just released**: the new edition of ISO 9001:2026](https://www.iso.org/standard/9001 "ISO 9001:2026 - Quality management systems — Requirements")
 
-[Technical Committees](https://www.iso.org/cms/live/live/en/sites/isoorg/home/developing-standards/who-develops-standards/technical-committees.html "There are more than 300 ISO technical committees developing standards covering almost every sector imaginable.")
+[Technical Committees](https://www.iso.org/technical-committees.html "There are more than 300 ISO technical committees developing standards covering almost every sector imaginable.")
 
 # ISO/TC 299
 
